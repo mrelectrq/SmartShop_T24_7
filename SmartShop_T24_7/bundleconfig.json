@@ -1,0 +1,26 @@
+[
+  {
+    "outputFileName": "wwwroot/Bundless/bundle_startup.css",
+    "inputFiles": [
+      "wwwroot/CSS_Styles/main.css",
+      "wwwroot/CSS_Styles/bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/Bundless/bundle_startup.js",
+    "inputFiles": [
+      "wwwroot/JS/bootstrap.js",
+      "wwwroot/JS/jquery.prettyPhoto.js",
+      "wwwroot/JS/jquery-1.11.3.min.js",
+      "wwwroot/JS/wow.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/Bundless/bundle_registration.css",
+    "inputFiles": [
+      "wwwroot/CSS_styles/bootstrap.css",
+      "wwwroot/CSS_styles/sing-in.css"
+    ]
+  }
+  
+]

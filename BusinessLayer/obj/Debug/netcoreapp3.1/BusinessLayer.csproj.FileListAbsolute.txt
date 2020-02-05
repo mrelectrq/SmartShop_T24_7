@@ -1,0 +1,15 @@
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.deps.json
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.dll
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.pdb
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfoInputs.cache
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfo.cs
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.runtimeconfig.json
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.runtimeconfig.dev.json
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csprojAssemblyReference.cache
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\bin\Debug\netcoreapp3.1\DataLayer.dll
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\bin\Debug\netcoreapp3.1\Smart_Helpers.dll
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\bin\Debug\netcoreapp3.1\DataLayer.pdb
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\bin\Debug\netcoreapp3.1\Smart_Helpers.pdb
+D:\C#_projects\SmartShop_T24_7\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete

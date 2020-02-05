@@ -1,0 +1,3 @@
+D:\C#_projects\SmartShop_T24_7\obj\Debug\netcoreapp3.1\SmartShop_T24_7.csprojAssemblyReference.cache
+D:\C#_projects\SmartShop_T24_7\obj\Debug\netcoreapp3.1\SmartShop_T24_7.AssemblyInfoInputs.cache
+D:\C#_projects\SmartShop_T24_7\obj\Debug\netcoreapp3.1\SmartShop_T24_7.AssemblyInfo.cs
