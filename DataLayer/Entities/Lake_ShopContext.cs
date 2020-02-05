@@ -6,7 +6,6 @@ namespace DataLayer.Entities
 {
     public partial class Lake_ShopContext : DbContext
     {
-        //scaffold-dbcontext "Server=DESKTOP-B3HCEB1;Database=Lake_Shop;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -StartupProject DataLayer -Outputdir Entities -Force
         public Lake_ShopContext()
         {
         }
@@ -23,6 +22,7 @@ namespace DataLayer.Entities
         public virtual DbSet<Mark> Mark { get; set; }
         public virtual DbSet<Model> Model { get; set; }
         public virtual DbSet<ProductProprietes> ProductProprietes { get; set; }
+        public virtual DbSet<SessionUsers> SessionUsers { get; set; }
         public virtual DbSet<UserAccountsData> UserAccountsData { get; set; }
         public virtual DbSet<Warehouse> Warehouse { get; set; }
 
@@ -40,7 +40,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<BagApp>(entity =>
             {
                 entity.HasKey(e => e.BasketId)
-                    .HasName("PK__bag_app__65E4F9F0EF89D62C");
+                    .HasName("PK__bag_app__65E4F9F0C77E0518");
 
                 entity.ToTable("bag_app");
 
@@ -75,14 +75,13 @@ namespace DataLayer.Entities
                 entity.HasOne(d => d.ProductNumberNavigation)
                     .WithMany(p => p.BagApp)
                     .HasForeignKey(d => d.ProductNumber)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__bag_app__product__47DBAE45");
             });
 
             modelBuilder.Entity<Category1>(entity =>
             {
                 entity.HasKey(e => e.IdCategory1)
-                    .HasName("PK__category__B2FAA5AB3496AE99");
+                    .HasName("PK__category__B2FAA5ABAC04AC9B");
 
                 entity.ToTable("category_1");
 
@@ -109,7 +108,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Category2>(entity =>
             {
                 entity.HasKey(e => e.IdCategory2)
-                    .HasName("PK__category__B2FAA5ACFD1B1C63");
+                    .HasName("PK__category__B2FAA5AC09135925");
 
                 entity.ToTable("category_2");
 
@@ -136,7 +135,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Category3>(entity =>
             {
                 entity.HasKey(e => e.IdCategory3)
-                    .HasName("PK__category__B2FAA5AD1F9AF159");
+                    .HasName("PK__category__B2FAA5AD7D6D720E");
 
                 entity.ToTable("category_3");
 
@@ -163,7 +162,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Mark>(entity =>
             {
                 entity.HasKey(e => e.IdMark)
-                    .HasName("PK__mark__6FA03E66E453F475");
+                    .HasName("PK__mark__6FA03E66E54A1B9B");
 
                 entity.ToTable("mark");
 
@@ -183,7 +182,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Model>(entity =>
             {
                 entity.HasKey(e => e.IdModel)
-                    .HasName("PK__model__754035282E4BB381");
+                    .HasName("PK__model__7540352851E519D2");
 
                 entity.ToTable("model");
 
@@ -222,13 +221,37 @@ namespace DataLayer.Entities
                     .WithMany(p => p.ProductProprietes)
                     .HasForeignKey(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__product_p__id_pr__4CA06362");
+                    .HasConstraintName("FK__product_p__id_pr__4BAC3F29");
+            });
+
+            modelBuilder.Entity<SessionUsers>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("session_users");
+
+                entity.Property(e => e.CookieString)
+                    .HasColumnName("cookie_string")
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ExpiredTime)
+                    .HasColumnName("expired_time")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.IdSession)
+                    .HasColumnName("id_session")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Username)
+                    .HasColumnName("username")
+                    .HasMaxLength(25)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<UserAccountsData>(entity =>
             {
                 entity.HasKey(e => e.IdAccount)
-                    .HasName("PK__user_acc__B2C7C78379E140DC");
+                    .HasName("PK__user_acc__B2C7C783D765F4FC");
 
                 entity.ToTable("user_accounts_data");
 
@@ -246,10 +269,14 @@ namespace DataLayer.Entities
                     .HasColumnName("date_basket_init")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.IpAddress)
-                    .HasColumnName("ip_address")
+                entity.Property(e => e.Ipaddress)
+                    .HasColumnName("ipaddress")
                     .HasMaxLength(25)
                     .IsUnicode(false);
+
+                entity.Property(e => e.LastLogin)
+                    .HasColumnName("last_login")
+                    .HasColumnType("datetime");
 
                 entity.Property(e => e.Password)
                     .IsRequired()
@@ -292,7 +319,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Warehouse>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__warehous__BA39E84FE4BE8984");
+                    .HasName("PK__warehous__BA39E84FC36C1B14");
 
                 entity.ToTable("warehouse");
 

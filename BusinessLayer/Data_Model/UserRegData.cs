@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusinessLayer.Data_Model
 {
-    public class UserRegData
+    public class UserRegModel
     {
         public string Username { get; set; }
         public string Password { get; set; }

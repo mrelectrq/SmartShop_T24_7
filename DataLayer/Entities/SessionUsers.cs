@@ -5,9 +5,9 @@ namespace DataLayer.Entities
 {
     public partial class SessionUsers
     {
-        public long SessionId { get; set; }
+        public int IdSession { get; set; }
         public string Username { get; set; }
         public string CookieString { get; set; }
-        public DateTime ExpireTime { get; set; }
+        public DateTime? ExpiredTime { get; set; }
     }
 }

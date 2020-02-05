@@ -4,6 +4,7 @@ using DataLayer.Responses;
 using Smart_Helpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -11,7 +12,7 @@ namespace BusinessLayer.Implementation
 {
     public class EFUserImplement
     {
-        internal RegistrationResponse Registration_data(UserRegData data)
+        internal RegistrationResponse RegistrationAction(UserRegModel data)
         {
             var response = new RegistrationResponse();
             response.Request_status = true;
@@ -39,7 +40,7 @@ namespace BusinessLayer.Implementation
                 dataLayer.Username = data.Username;
                 dataLayer.Password = EncryptString.HashGen(data.Password);
                 dataLayer.PhoneNumber = data.PhoneNumber;
-                dataLayer.IpAddress = data.IpAddress;
+                dataLayer.Ipaddress = data.IpAddress;
                 dataLayer.RoleUserAccount = data.RoleUserAccount;
                 dataLayer.DateBasketInit = data.DateReg;
                 using (var _context = new Lake_ShopContext())
@@ -50,11 +51,111 @@ namespace BusinessLayer.Implementation
                 }
             }
             else return new RegistrationResponse { Request_status = false, Request_message = "Eroare de inregistrare account, apelati suport tehnic" };
-            
-            }
+
         }
 
 
+        internal string CookieGen(string username, string password)
+        {
+
+            var cookie = CookieGenerator.Create(username + ":" + password);
+            using (var _context = new Lake_ShopContext())
+            {
+                SessionUsers session = new SessionUsers();
+
+                session.Username = username;
+                session.CookieString = cookie;
+                session.ExpiredTime = DateTime.Now.AddDays(1);
+                _context.SessionUsers.Add(session);
+            }
+
+            return cookie;
+        }
+
+        internal LoginResponse LoginAction(UserLogModel data)
+        {
+
+            UserAccountsData user = new UserAccountsData();
+
+
+            var validate = new EmailAddressAttribute();
+
+            if (validate.IsValid(data.Username))
+            {
+
+                using (var _context = new Lake_ShopContext())
+                {
+                    user = _context.UserAccountsData.FirstOrDefault(m => m.AccountEmail == data.Username && m.Password == EncryptString.HashGen(data.Password));
+
+                }
+
+                if (user == null)
+                {
+                    return new LoginResponse { RequestStatus = false, RequestMessage = "Email sau Password introdus incorect" };
+                }
+                else
+                {
+                    using (var _context = new Lake_ShopContext())
+                    {
+
+                        user.LastLogin = data.LoginData;
+                        user.Ipaddress = data.LoginIp;
+
+                        _context.UserAccountsData.Update(user);
+
+                        SessionUsers session = new SessionUsers();
+
+                        session.CookieString = CookieGenerator.Create(user.Username + ":" + user.Password);
+                        session.Username = user.Username;
+                        session.ExpiredTime = DateTime.Now.AddDays(1);
+                        _context.SessionUsers.AddAsync(session);
+
+                        return new LoginResponse { RequestStatus = true, Cookie_string = session.CookieString };
+                    }
+                }
+
+            }
+            else
+            {
+                using (var _context = new Lake_ShopContext())
+                {
+                    user = _context.UserAccountsData.FirstOrDefault(m => m.Username == data.Username && m.Password == EncryptString.HashGen(data.Password));
+
+                }
+
+                if (user == null)
+                {
+                    return new LoginResponse { RequestStatus = false, RequestMessage = "Username sau Password introdus incorect" };
+                }
+                else
+                {
+                    using (var _context = new Lake_ShopContext())
+                    {
+
+                        user.LastLogin = data.LoginData;
+                        user.Ipaddress = data.LoginIp;
+
+                        _context.UserAccountsData.Update(user);
+
+                        SessionUsers session = new SessionUsers();
+
+                        session.CookieString = CookieGenerator.Create(user.Username + ":" + user.Password);
+                        session.Username = user.Username;
+                        session.ExpiredTime = DateTime.Now.AddDays(1);
+                        _context.SessionUsers.AddAsync(session);
+
+                        return new LoginResponse { RequestStatus = true, Cookie_string = session.CookieString };
+                    }
+                }
+
+
+            }
+
+        }
     }
+
+
+}
+
 
 

@@ -10,11 +10,19 @@ namespace BusinessLayer.Level
 {
     public class UserBL :  EFUserImplement, ILogging
     {
-        public RegistrationResponse UserRegistration(UserRegData data)
+        public RegistrationResponse UserRegistrationAction(UserRegModel data)
         {
-            return Registration_data(data);
+            return RegistrationAction(data);
         }
 
-        
+        public string SetCookie(string username, string password)
+        {
+            return null;
+        }
+
+        public LoginResponse UserLoginAction (UserLogModel data)
+        {
+            return LoginAction(data);
+        }
     }
 }

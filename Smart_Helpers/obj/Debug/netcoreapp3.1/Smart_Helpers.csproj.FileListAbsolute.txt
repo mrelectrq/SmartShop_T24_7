@@ -7,3 +7,4 @@ D:\C#_projects\SmartShop_T24_7\Smart_Helpers\bin\Debug\netcoreapp3.1\Smart_Helpe
 D:\C#_projects\SmartShop_T24_7\Smart_Helpers\bin\Debug\netcoreapp3.1\Smart_Helpers.pdb
 D:\C#_projects\SmartShop_T24_7\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.dll
 D:\C#_projects\SmartShop_T24_7\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.pdb
+D:\C#_projects\SmartShop_T24_7\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.csprojAssemblyReference.cache
