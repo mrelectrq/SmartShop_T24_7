@@ -40,7 +40,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<BagApp>(entity =>
             {
                 entity.HasKey(e => e.BasketId)
-                    .HasName("PK__bag_app__65E4F9F0C77E0518");
+                    .HasName("PK__bag_app__65E4F9F0ECF63A72");
 
                 entity.ToTable("bag_app");
 
@@ -81,7 +81,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Category1>(entity =>
             {
                 entity.HasKey(e => e.IdCategory1)
-                    .HasName("PK__category__B2FAA5ABAC04AC9B");
+                    .HasName("PK__category__B2FAA5AB861B96A0");
 
                 entity.ToTable("category_1");
 
@@ -108,7 +108,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Category2>(entity =>
             {
                 entity.HasKey(e => e.IdCategory2)
-                    .HasName("PK__category__B2FAA5AC09135925");
+                    .HasName("PK__category__B2FAA5AC8463CE9A");
 
                 entity.ToTable("category_2");
 
@@ -135,7 +135,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Category3>(entity =>
             {
                 entity.HasKey(e => e.IdCategory3)
-                    .HasName("PK__category__B2FAA5AD7D6D720E");
+                    .HasName("PK__category__B2FAA5ADF53E8F31");
 
                 entity.ToTable("category_3");
 
@@ -162,7 +162,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Mark>(entity =>
             {
                 entity.HasKey(e => e.IdMark)
-                    .HasName("PK__mark__6FA03E66E54A1B9B");
+                    .HasName("PK__mark__6FA03E665A7D8D67");
 
                 entity.ToTable("mark");
 
@@ -182,7 +182,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Model>(entity =>
             {
                 entity.HasKey(e => e.IdModel)
-                    .HasName("PK__model__7540352851E519D2");
+                    .HasName("PK__model__754035282CB48AD9");
 
                 entity.ToTable("model");
 
@@ -201,11 +201,14 @@ namespace DataLayer.Entities
 
             modelBuilder.Entity<ProductProprietes>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.IdProduct)
+                    .HasName("PK__product___BA39E84F4AD92FD5");
 
                 entity.ToTable("product_proprietes");
 
-                entity.Property(e => e.IdProduct).HasColumnName("id_product");
+                entity.Property(e => e.IdProduct)
+                    .HasColumnName("id_product")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.ProprietyDescription)
                     .HasColumnName("propriety_description")
@@ -218,17 +221,20 @@ namespace DataLayer.Entities
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdProductNavigation)
-                    .WithMany(p => p.ProductProprietes)
-                    .HasForeignKey(d => d.IdProduct)
+                    .WithOne(p => p.ProductProprietes)
+                    .HasForeignKey<ProductProprietes>(d => d.IdProduct)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__product_p__id_pr__4BAC3F29");
+                    .HasConstraintName("FK__product_p__id_pr__4CA06362");
             });
 
             modelBuilder.Entity<SessionUsers>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.IdSession)
+                    .HasName("PK__session___A9E494D0BED6CBDC");
 
                 entity.ToTable("session_users");
+
+                entity.Property(e => e.IdSession).HasColumnName("id_session");
 
                 entity.Property(e => e.CookieString)
                     .HasColumnName("cookie_string")
@@ -237,10 +243,6 @@ namespace DataLayer.Entities
                 entity.Property(e => e.ExpiredTime)
                     .HasColumnName("expired_time")
                     .HasColumnType("datetime");
-
-                entity.Property(e => e.IdSession)
-                    .HasColumnName("id_session")
-                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Username)
                     .HasColumnName("username")
@@ -251,7 +253,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<UserAccountsData>(entity =>
             {
                 entity.HasKey(e => e.IdAccount)
-                    .HasName("PK__user_acc__B2C7C783D765F4FC");
+                    .HasName("PK__user_acc__B2C7C783220A7662");
 
                 entity.ToTable("user_accounts_data");
 
@@ -281,7 +283,7 @@ namespace DataLayer.Entities
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasColumnName("password")
-                    .HasMaxLength(25)
+                    .HasMaxLength(500)
                     .IsUnicode(false);
 
                 entity.Property(e => e.PhoneNumber)
@@ -319,7 +321,7 @@ namespace DataLayer.Entities
             modelBuilder.Entity<Warehouse>(entity =>
             {
                 entity.HasKey(e => e.IdProduct)
-                    .HasName("PK__warehous__BA39E84FC36C1B14");
+                    .HasName("PK__warehous__BA39E84F853574D8");
 
                 entity.ToTable("warehouse");
 

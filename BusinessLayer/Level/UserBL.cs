@@ -17,7 +17,7 @@ namespace BusinessLayer.Level
 
         public string SetCookie(string username, string password)
         {
-            return null;
+            return CookieGen(username, password);
         }
 
         public LoginResponse UserLoginAction (UserLogModel data)

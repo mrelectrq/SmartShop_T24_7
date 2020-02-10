@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
+using System.Web.Providers.Entities;
 using BusinessLayer;
 using BusinessLayer.Data_Model;
 using BusinessLayer.Interfaces;
 using DataLayer.Responses;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SmartShop_T24_7.Models;
 
@@ -14,10 +17,14 @@ namespace SmartShop_T24_7.Controllers
     public class AuthController : Controller
     {
         private readonly ILogging _status;
-        public AuthController()
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        public AuthController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
-            var bl= new BusinessManager();
+            var bl = new BusinessManager();
             _status = bl.GetLogging();
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         public IActionResult Registration()
         {
@@ -25,28 +32,49 @@ namespace SmartShop_T24_7.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Registration(RegModel data)
         {
-            var dataBL = new UserRegModel();
-            dataBL.Username = data.Username;
-            dataBL.Password = data.Password;
-            dataBL.AccountEmail = data.Email;
-            dataBL.IpAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
-            dataBL.PhoneNumber = data.Phone_number;
-            dataBL.DateReg = DateTime.Now;
-            dataBL.RoleUserAccount = "UserLevel1";
+
+            if (ModelState.IsValid)
+            {
+                var dataBL = new UserRegModel();
+                dataBL.Username = data.Username;
+                dataBL.Password = data.Password;
+                dataBL.AccountEmail = data.Email;
+                dataBL.IpAddress = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+                dataBL.PhoneNumber = data.Phone_number;
+                dataBL.DateReg = DateTime.Now;
+                dataBL.RoleUserAccount = "UserLevel1";
 
 
-            RegistrationResponse response = _status.UserRegistrationAction(dataBL);
+                RegistrationResponse response = _status.UserRegistrationAction(dataBL);
 
-            if (response.Request_status)
+                if (response.Request_status)
+                {
+
+                    var cookie = _status.SetCookie(data.Username, data.Password);
+                    Response.Cookies.Append("_credential", cookie);
+                    User user = new User { UserName = data.Username };
+
+                    _userManager.CreateAsync(user);
+                    _userManager.AddToRoleAsync(user, "User");
+                    
+    
+                    return RedirectToAction("Index", "Home");
+
+                }
+                else
+                {
+                    ModelState.AddModelError("", response.Request_message);
+                    return View();
+                }
+            }
+            else
             {
 
-                var cookie = _status.SetCookie(data.Username, data.Password);
-                Response.Cookies.Append("_credential", cookie);
-
+                return View(data);
             }
-            return View();
         }
 
         [HttpPost]
@@ -62,13 +90,15 @@ namespace SmartShop_T24_7.Controllers
 
             if (response.RequestStatus == false)
             {
-                return View();
+
+                return View(model);
             }
             else
             {
-                Response.Cookies.Append("_credential", response.Cookie_string);
+
+                return View();
             }
-            return View();
+
         }
     }
 }

@@ -8,3 +8,13 @@ D:\C#_projects\SmartShop_T24_7\Smart_Helpers\bin\Debug\netcoreapp3.1\Smart_Helpe
 D:\C#_projects\SmartShop_T24_7\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.dll
 D:\C#_projects\SmartShop_T24_7\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.pdb
 D:\C#_projects\SmartShop_T24_7\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.csprojAssemblyReference.cache
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\Smart_Helpers\bin\Debug\netcoreapp3.1\Smart_Helpers.deps.json
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\Smart_Helpers\bin\Debug\netcoreapp3.1\Smart_Helpers.runtimeconfig.json
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\Smart_Helpers\bin\Debug\netcoreapp3.1\Smart_Helpers.runtimeconfig.dev.json
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\Smart_Helpers\bin\Debug\netcoreapp3.1\Smart_Helpers.dll
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\Smart_Helpers\bin\Debug\netcoreapp3.1\Smart_Helpers.pdb
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.AssemblyInfoInputs.cache
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.AssemblyInfo.cs
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.dll
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.pdb
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\Smart_Helpers\obj\Debug\netcoreapp3.1\Smart_Helpers.csprojAssemblyReference.cache

@@ -23,10 +23,16 @@
             <a class="py-2 d-none d-md-inline-block" href="#">Продукция</a>
             <a class="py-2 d-none d-md-inline-block" href="#">Поддержка</a>
             <a class="py-2 d-none d-md-inline-block" href="sing-up.html">Корзина</a>
-            <a class="py-2 d-none d-md-inline-block" href="sing-in.html">Autorizare</a> 
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="py-2 d-none d-md-inline-block">Hello @User.Identity.Name</a>
+            }
+            else
+            {
+            <a class="py-2 d-none d-md-inline-block" href="sing-in.html">Autorizare</a>
             <a class="py-2 d-none d-md-inline-block" href="@Url.Action("Registration", "Auth")">Inregistrare</a>
-           
-        </div>
+            }
+            </div>
     </nav>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">

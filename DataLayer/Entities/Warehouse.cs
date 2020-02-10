@@ -8,7 +8,6 @@ namespace DataLayer.Entities
         public Warehouse()
         {
             BagApp = new HashSet<BagApp>();
-            ProductProprietes = new HashSet<ProductProprietes>();
         }
 
         public int IdProduct { get; set; }
@@ -31,7 +30,7 @@ namespace DataLayer.Entities
         public virtual Category3 IdCategory3Navigation { get; set; }
         public virtual Mark IdMarkNavigation { get; set; }
         public virtual Model IdModelNavigation { get; set; }
+        public virtual ProductProprietes ProductProprietes { get; set; }
         public virtual ICollection<BagApp> BagApp { get; set; }
-        public virtual ICollection<ProductProprietes> ProductProprietes { get; set; }
     }
 }

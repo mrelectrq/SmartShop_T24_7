@@ -8,3 +8,13 @@ D:\C#_projects\SmartShop_T24_7\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.pdb
 D:\C#_projects\SmartShop_T24_7\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.runtimeconfig.json
 D:\C#_projects\SmartShop_T24_7\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.runtimeconfig.dev.json
 D:\C#_projects\SmartShop_T24_7\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.csprojAssemblyReference.cache
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.deps.json
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.runtimeconfig.json
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.runtimeconfig.dev.json
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.dll
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.pdb
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.AssemblyInfoInputs.cache
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.AssemblyInfo.cs
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.dll
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.pdb
+D:\C#_projects\WEB projects\SmartShop_T24_7_20200210\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.csprojAssemblyReference.cache

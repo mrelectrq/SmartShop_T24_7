@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 
 namespace DataLayer.Entities
 {
-    public partial class UserAccountsData
+    public partial class UserAccountsData:IdentityUser
     {
         public int IdAccount { get; set; }
         public string Username { get; set; }
