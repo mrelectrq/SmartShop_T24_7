@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Authorize";
+}
+
+@model SmartShop_T24_7.Models.LogModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/Bundless/bundle_registration.min.css">
+</head>
+<body class="" style="">
+    <form asp-controller="Auth" asp-action="Registration" class="form-signin" method="post">
+        <center><img class="mb-4" src="~/Images/1024px-Tramway-T.svg.png" width="72" height="72" alt="logo"></center>
+        @Html.AntiForgeryToken()
+        @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "form-control", @type = "Username" })
+        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+        @Html.TextBoxFor(m => m.Password, new { placeholder = "Password", @class = "form-control", @id = "inputPassword" })
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <div class="text-danger">@Html.ValidationSummary(true)</div>
+    </form>
+
+
+</body>
+</html>
+

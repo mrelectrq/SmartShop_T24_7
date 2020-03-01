@@ -41,11 +41,13 @@ namespace BusinessLayer.Implementation
                 dataLayer.Password = EncryptString.HashGen(data.Password);
                 dataLayer.PhoneNumber = data.PhoneNumber;
                 dataLayer.Ipaddress = data.IpAddress;
+                dataLayer.AccountEmail = data.AccountEmail;
                 dataLayer.RoleUserAccount = data.RoleUserAccount;
                 dataLayer.DateBasketInit = data.DateReg;
                 using (var _context = new Lake_ShopContext())
                 {
                     _context.UserAccountsData.Add(dataLayer);
+                    _context.SaveChanges();
                     //_context.BagApp.Add(m => m.)
                     return new RegistrationResponse { Request_status = true, Request_message = "Account a fost creat cu succes" };
                 }
@@ -67,6 +69,7 @@ namespace BusinessLayer.Implementation
                 session.CookieString = cookie;
                 session.ExpiredTime = DateTime.Now.AddDays(1);
                 _context.SessionUsers.Add(session);
+                _context.SaveChanges();
             }
 
             return cookie;
@@ -109,6 +112,7 @@ namespace BusinessLayer.Implementation
                         session.Username = user.Username;
                         session.ExpiredTime = DateTime.Now.AddDays(1);
                         _context.SessionUsers.AddAsync(session);
+                        _context.SaveChanges();
 
                         return new LoginResponse { RequestStatus = true, Cookie_string = session.CookieString };
                     }
@@ -143,6 +147,7 @@ namespace BusinessLayer.Implementation
                         session.Username = user.Username;
                         session.ExpiredTime = DateTime.Now.AddDays(1);
                         _context.SessionUsers.AddAsync(session);
+                        _context.SaveChanges();
 
                         return new LoginResponse { RequestStatus = true, Cookie_string = session.CookieString };
                     }

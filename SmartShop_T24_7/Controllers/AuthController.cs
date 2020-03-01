@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using System.Web.Providers.Entities;
 using BusinessLayer;
 using BusinessLayer.Data_Model;
 using BusinessLayer.Interfaces;
 using DataLayer.Responses;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SmartShop_T24_7.Models;
@@ -17,14 +19,12 @@ namespace SmartShop_T24_7.Controllers
     public class AuthController : Controller
     {
         private readonly ILogging _status;
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        public AuthController(UserManager<User> userManager, SignInManager<User> signInManager)
+
+        public AuthController()
         {
             var bl = new BusinessManager();
             _status = bl.GetLogging();
-            _userManager = userManager;
-            _signInManager = signInManager;
+
         }
         public IActionResult Registration()
         {
@@ -55,12 +55,14 @@ namespace SmartShop_T24_7.Controllers
 
                     var cookie = _status.SetCookie(data.Username, data.Password);
                     Response.Cookies.Append("_credential", cookie);
-                    User user = new User { UserName = data.Username };
 
-                    _userManager.CreateAsync(user);
-                    _userManager.AddToRoleAsync(user, "User");
-                    
-    
+
+
+                    Authenticate(data.Username);
+
+                    var user = User.Identity.Name;
+                    var state = User.Identity.IsAuthenticated;
+
                     return RedirectToAction("Index", "Home");
 
                 }
@@ -76,22 +78,36 @@ namespace SmartShop_T24_7.Controllers
                 return View(data);
             }
         }
+        public IActionResult Authorize()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public ActionResult Authentification(LogModel model)
+        public ActionResult Authorize(LogModel model)
         {
-            var data = new UserLogModel();
-            data.Username = model.Username;
-            data.Password = model.Password;
-            data.LoginIp = Request.HttpContext.Connection.RemoteIpAddress.ToString();
-            data.LoginData = DateTime.Now;
-
-            var response = _status.UserLoginAction(data);
-
-            if (response.RequestStatus == false)
+            if (ModelState.IsValid)
             {
+                var data = new UserLogModel();
+                data.Username = model.Username;
+                data.Password = model.Password;
+                data.LoginIp = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+                data.LoginData = DateTime.Now;
 
-                return View(model);
+                var response = _status.UserLoginAction(data);
+
+                if (response.RequestStatus == false)
+                {
+
+                    ModelState.AddModelError("", response.RequestMessage);
+                    return View();
+                    //return PartialView("~/Views/Shared/_AuthorizePartial.cshtml");
+                }
+                else
+                {
+                    Authenticate(model.Username);
+                    return RedirectToAction("Index", "Home");
+                }
             }
             else
             {
@@ -100,5 +116,28 @@ namespace SmartShop_T24_7.Controllers
             }
 
         }
+
+        public IActionResult LogOut()
+        {
+            HttpContext.SignOutAsync();
+
+            //ControllerContext.HttpContext.Response.Cookies.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [NonAction]
+        private async Task Authenticate(string username)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimsIdentity.DefaultNameClaimType, username)
+               
+            };
+            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+
+        }
     }
+
 }

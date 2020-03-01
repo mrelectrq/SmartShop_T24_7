@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SmartShop_T24_7
+namespace SmartShop_T24_7_20200210
 {
     class Program
     {

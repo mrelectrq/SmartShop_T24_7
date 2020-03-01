@@ -13,7 +13,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="~/Bundless/bundle_registration.min.css">
 </head>
-<body>
+<body class="" style="">
     <form asp-controller="Auth" asp-action="Registration" class="form-signin" method="post">
         <center><img class="mb-4" src="~/Images/1024px-Tramway-T.svg.png" width="72" height="72" alt="logo"></center>
         @Html.AntiForgeryToken()
@@ -31,10 +31,6 @@
         <div class="text-danger">@Html.ValidationSummary(true)</div>
     </form>
 
-
-
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
 
 </body>
 </html>

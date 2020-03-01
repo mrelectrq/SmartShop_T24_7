@@ -1,1 +1,1 @@
-﻿produceoutput=true
+﻿///<binding BeforeBuild='Update all files' />produceoutput=true

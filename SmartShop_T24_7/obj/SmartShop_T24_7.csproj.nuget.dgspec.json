@@ -211,17 +211,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Google.Apis.Core": {
+            "Microsoft.AspNet.Mvc": {
               "target": "Package",
-              "version": "[1.43.0, )"
-            },
-            "Microsoft.AspNet.Identity.Core": {
-              "target": "Package",
-              "version": "[2.2.3, )"
-            },
-            "Microsoft.AspNet.Providers.Core": {
-              "target": "Package",
-              "version": "[2.0.0, )"
+              "version": "[5.2.7, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -245,9 +237,21 @@
               "target": "Package",
               "version": "[3.1.1, )"
             },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Core": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Microsoft.jQuery.Unobtrusive.Ajax": {
+              "target": "Package",
+              "version": "[3.2.6, )"
+            },
+            "Microsoft.jQuery.Unobtrusive.Validation": {
+              "target": "Package",
+              "version": "[3.2.11, )"
             }
           },
           "imports": [

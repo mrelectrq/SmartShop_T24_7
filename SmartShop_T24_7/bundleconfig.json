@@ -9,9 +9,7 @@
   {
     "outputFileName": "wwwroot/Bundless/bundle_startup.js",
     "inputFiles": [
-      "wwwroot/JS/bootstrap.js",
       "wwwroot/JS/jquery.prettyPhoto.js",
-      "wwwroot/JS/jquery-1.11.3.min.js",
       "wwwroot/JS/wow.js"
     ]
   },

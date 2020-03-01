@@ -1,0 +1,73 @@
+﻿
+@model SmartShop_T24_7.Models.LogModel
+@*<div class="modal" id="add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addContactLabel">Add contact</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form controller="Auth" action="Auth/Authorize" method="post"
+                      data-ajax-failure="failed"
+                      data-ajax="true"
+                      data-ajax-method="post"
+                      data-ajax-mode="after">
+                    <div class="form-group">
+                        <div class="modal-body">
+
+                            @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "form-control", @type = "Username" })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="modal-body">
+                            @Html.TextBoxFor(m => m.Password, new { placeholder = "Password", @class = "form-control", @id = "inputPassword" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <div class="text-danger">@Html.ValidationSummary(true)</div>
+                        <div id="full_name_validate"></div>
+                        <button type="submit" class="btn btn-primary">Join</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>*@
+
+
+<div class="modal fade" id="add-contact" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addContactLabel">Add contact</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <div class="modal-body">
+
+                        @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "form-control", @type = "Username" })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="modal-body">
+                        @Html.TextBoxFor(m => m.Password, new { placeholder = "Password", @class = "form-control", @id = "inputPassword" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-save="modal">Join</button>
+        </div>
+    </div>
+</div>
+</div>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DataLayer.Entities
 {
-    public partial class UserAccountsData:IdentityUser
+    public partial class UserAccountsData
     {
         public int IdAccount { get; set; }
         public string Username { get; set; }
